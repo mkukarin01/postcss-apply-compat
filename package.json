@@ -1,0 +1,18 @@
+{
+  "name": "postcss-apply-compat",
+  "version": "0.0.1",
+  "description": "Replacement for postcss-apply for postcss@8",
+  "main": "index.cjs",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mkukarin01/postcss-apply-compat.git"
+  },
+  "author": "Maksim Kukarin <m.kukarin01@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  }
+}
