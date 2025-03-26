@@ -1,6 +1,17 @@
 # postcss-apply-compat
 
-> A compact and compatible replacement for the deprecated PostCSS `@apply` rule (from RFC) for PostCSS@8.
+> A compact, robust, and fully typed PostCSS@8-compatible plugin to replace the deprecated `@apply` rule.
+
+## Why this plugin?
+
+PostCSS 8 dropped support for the legacy `@apply` rule (part of an old RFC). `postcss-apply-compat` provides a seamless migration path for teams moving from PostCSS 7 to PostCSS 8, ensuring your custom property sets still work as expected, with minimal configuration and full type safety.
+
+## Features
+
+✅ **Fully compatible** with PostCSS 8  
+✅ **TypeScript support** with comprehensive declarations  
+✅ Clear and informative **warnings for incorrect syntax**  
+✅ **Minimal dependencies**: fast and robust (bundled via esbuild)
 
 ## Installation
 
@@ -11,54 +22,54 @@ yarn add -D postcss-apply-compat
 
 ## Usage
 
-**`postcss.config.js`:**
+In your `postcss.config.js`:
 
 ```js
 module.exports = {
-  plugins: [require("postcss-apply-compat")()],
+  plugins: [
+    require('postcss-apply-compat')()
+  ]
 };
 ```
 
-### Example input CSS:
+### Example
+
+**Input CSS:**
 
 ```css
 :root {
-  --small: {
-    line-height: 1.3;
-  }
-  --xSmall: {
-    line-height: 1.2;
-  } /* missing semicolon */
+  --button: {
+    padding: 10px 20px;
+    border-radius: 5px;
+  };
 }
 
-.title {
-  @apply --small;
-}
-
-.subtitle {
-  @apply --xSmall;
+.primary-btn {
+  @apply --button;
+  background-color: blue;
 }
 ```
 
-### Example output CSS and warnings:
-
-**CSS Output:**
+**Output CSS:**
 
 ```css
-.title {
-  line-height: 1.3;
-}
-
-.subtitle {
-  line-height: 1.2;
+.primary-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: blue;
 }
 ```
 
-**Warnings during compilation:**
+### Warnings during compilation:
 
 ```
-⚠️  Property set "--xSmall" is missing a trailing semicolon after '}'. [line:4, column:3]
+⚠  Property set "--display" is missing a trailing semicolon after '}'. [postcss-apply-compat]
+⚠  Custom property set "--regular" not found. [postcss-apply-compat]
 ```
+
+## Migration from PostCSS 7
+
+Simply replace your old `postcss-apply` plugin with `postcss-apply-compat` in your PostCSS configuration. The new plugin uses the latest PostCSS 8 plugin syntax for improved reliability and future-proofing.
 
 ## License
 
