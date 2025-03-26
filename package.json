@@ -1,6 +1,6 @@
 {
   "name": "postcss-apply-compat",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Replacement for postcss-apply for postcss@8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
