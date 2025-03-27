@@ -22,10 +22,11 @@ function postcssApplyCompat(): Plugin {
           // only treat as property set if enclosed in { }
           if (isPropSet) {
             // check for trailing semicolon after closing brace
-            const declRawValue = decl.raws.value?.raw || decl.toString();
-            if (!/}\s*;$/.test(declRawValue)) {
-              decl.warn(result, `Property set "${decl.prop}" is missing a trailing semicolon after '}'.`);
-            }
+            // currently that's a bit flaky, I will figure out it later
+            // const declRawValue = decl.raws.value?.raw || decl.toString();
+            // if (!/}\s*;$/.test(declRawValue)) {
+            //   decl.warn(result, `Property set "${decl.prop}" is missing a trailing semicolon after '}'.`);
+            // }
 
             const innerCss = rawValue.slice(1, -1).trim();
 
